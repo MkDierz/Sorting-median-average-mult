@@ -72,18 +72,37 @@ def multutil(array):
     return mult
 
 
+def selectutil(array):
+    try:
+        print("Select Function to run")
+        print("Select multiple for multiple output")
+        print("1. Average")
+        print("2. Median")
+        print("3. Multiple all number")
+        print("4. All")
+        option = input("chose option 1,2,3 or 4(default) :")
+        if option == "":
+            option = "4"
+        if any(("1" in option) for i in option) or any(("4" in option) for i in option):
+            average = averageutil(array)
+            print("average :", average)
+        if any(("2" in option) for i in option) or any(("4" in option) for i in option):
+            median = medianutil(array)
+            print("median :", median)
+        if any(("3" in option) for i in option) or any(("4" in option) for i in option):
+            mult = multutil(array)
+            print("all number multiplied :", mult)
+    except:
+        print("!! INPUT ERROR TRY AGAIN !!")
+        selectutil(array)
+
+
 def main():
     inputval = getInput()
-    print("the input is",inputval)
-    # print(inputval)
+    print("the input is", inputval)
     sorted_input = sort(inputval)
-    average = averageutil(inputval)
-    median = medianutil(sorted_input)
-    mult = multutil(sorted_input)
     print("sorted Input :", str(sorted_input))
-    print("average :", average)
-    print("median :", median)
-    print("all number multiplied :", mult)
+    selectutil(sorted_input)
 
 
 if __name__ == '__main__':
